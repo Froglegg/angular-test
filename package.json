@@ -1,36 +1,31 @@
 {
   "name": "test-app",
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
-    "test": "ng test",
-    "lint": "ng lint",
-    "e2e": "ng e2e"
+    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+    "start:prod": "node server.js",
+    "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
+    "client": "cd client && ng serve",
+    "install": "cd client && npm install",
+    "build": "cd client && ng run build",
+    "heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && ng build --prod"
   },
-  "private": true,
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "dependencies": {
-    "@angular/animations": "~8.2.14",
-    "@angular/common": "~8.2.14",
-    "@angular/compiler": "~8.2.14",
-    "@angular/core": "~8.2.14",
-    "@angular/forms": "~8.2.14",
-    "@angular/platform-browser": "~8.2.14",
-    "@angular/platform-browser-dynamic": "~8.2.14",
-    "@angular/router": "~8.2.14",
-    "rxjs": "~6.4.0",
-    "tslib": "^1.10.0",
-    "zone.js": "~0.9.1"
-  },
-  "devDependencies": {
-    "@angular-devkit/build-angular": "~0.803.21",
-    "@angular/cli": "~8.3.21",
-    "@angular/compiler-cli": "~8.2.14",
-    "@angular/language-service": "~8.2.14",
-    "@types/node": "~8.9.4",
-    "ts-node": "~7.0.0",
-    "tslint": "~5.15.0",
-    "typescript": "~3.5.3"
+    "@angular/cli": "^8.3.21",
+    "@angular/compiler-cli": "^7.2.16",
+    "concurrently": "^5.0.2",
+    "dotenv": "^8.2.0",
+    "enhanced-resolve": "^4.1.1",
+    "express": "^4.17.1",
+    "helmet": "^3.21.2",
+    "morgan": "^1.9.1",
+    "nodemon": "^2.0.2",
+    "typescript": "^3.7.4"
   }
 }
