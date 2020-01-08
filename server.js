@@ -6,7 +6,6 @@ const helmet = require("helmet"); // creates headers that protect from attacks (
 const cors = require("cors"); // allows/disallows cross-site communication
 const corsOptions = require("./corsOptions");
 const morgan = require("morgan"); // logs requests, use "tiny" or "combined"
-const routes = require("./routes"); // api routes
 
 require("dotenv").config();
 app.use(express.urlencoded({ extended: true }));
@@ -17,7 +16,7 @@ app.use(morgan("combined"));
 
 // API calls
 app.get("/api/hello", async (req, res) => {
-  res.send({ express: "Hello From Express hey", session: req.session });
+  res.send({ express: "Hello From Express" });
 });
 
 // NODE_ENV is a heroku config
@@ -29,3 +28,5 @@ if (process.env.NODE_ENV === "production") {
     res.sendFile(path.join(__dirname, "client/dist/test-app", "index.html"));
   });
 }
+
+app.listen(port, () => console.log(`Listening on port ${port}`));
