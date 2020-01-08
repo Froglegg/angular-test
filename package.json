@@ -10,7 +10,6 @@
     "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
     "client": "cd client && ng serve",
     "install": "cd client && npm install",
-    "postinstall": "cd client && ng build --aot -prod",
     "build": "cd client && ng run build",
     "heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && ng build --prod"
   },
