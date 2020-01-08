@@ -1,0 +1,17 @@
+<p>
+  Hey
+</p>
+<button onClick="this.getServerResponse()">try me</button>
+<p id="test"></p>
+<script type="text/javascript">
+  async function getServerResponse() {
+    const request = await fetch("/api/hello", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json"
+      }
+    });
+    const body = await request.json();
+    document.getElementById("test").innerHTML(body);
+  }
+</script>
