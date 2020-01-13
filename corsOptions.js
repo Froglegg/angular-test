@@ -3,7 +3,7 @@ const whitelist = [
   "http://localhost:5000/",
   "http://api.darksky.net",
   "https://maps.googleapis.com",
-  "https://ducks-love-rain.herokuapp.com"
+  "https://frog-leg-angular-test.herokuapp.com"
 ];
 const corsOptions = {
   origin: function(origin, callback) {
