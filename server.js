@@ -16,7 +16,7 @@ app.use(morgan("combined"));
 
 // API calls
 app.get("/api/hello", async (req, res) => {
-  res.send({ express: "Hello From Express" });
+  res.send({ express: "Hello From Express, proxied server!" });
 });
 
 // NODE_ENV is a heroku config
